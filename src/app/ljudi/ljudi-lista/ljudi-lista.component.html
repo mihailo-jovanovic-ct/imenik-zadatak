@@ -1,3 +1,8 @@
+<div class="form-group">
+    <input type="text" class="form-control" placeholder="Pretraga po imenu..."
+        style="width: 200px" [(ngModel)]="searchTerm"/>
+</div>
+<br>
 <div class="row">
     <div class="col-xs-12">
         <button class="btn btn-success" (click)="onNewCovek()">Novi Kontakt</button>
@@ -7,7 +12,7 @@
 <div class="row">
     <div class="col-xs-12">
         <app-ljudi-jedan
-        *ngFor="let covekEl of ljudi; let i = index"
+        *ngFor="let covekEl of ljudi  | ljudiFilter:searchTerm; let i = index"
         [covek]="covekEl"
         [index]="i"></app-ljudi-jedan>
     </div>

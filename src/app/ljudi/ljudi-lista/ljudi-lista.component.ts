@@ -10,6 +10,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class LjudiListaComponent implements OnInit {
     ljudi: Covek[];
+    searchTerm: string;
 
   constructor(private ljudiService: LjudiService,
               private router: Router,

@@ -11,6 +11,7 @@ import { LjudiJedanComponent } from './ljudi/ljudi-lista/ljudi-jedan/ljudi-jedan
 import { LjudiStartComponent } from './ljudi/ljudi-start/ljudi-start.component';
 import { LjudiEditComponent } from './ljudi/ljudi-edit/ljudi-edit.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { LjudiFilterPipe } from './ljudi/ljudi-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     HeaderComponent,
     LjudiJedanComponent,
     LjudiStartComponent,
-    LjudiEditComponent
+    LjudiEditComponent,
+    LjudiFilterPipe
   ],
   imports: [
     BrowserModule,
