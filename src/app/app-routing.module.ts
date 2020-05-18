@@ -7,6 +7,7 @@ import { LjudiEditComponent } from './ljudi/ljudi-edit/ljudi-edit.component';
 
 
 const appRoutes: Routes = [
+  { path: '', redirectTo: '/imenik', pathMatch: 'full'},
   { path: 'imenik', component: LjudiComponent, children: [
     { path: 'imenik', component: LjudiStartComponent },
     { path: 'new', component: LjudiEditComponent },
