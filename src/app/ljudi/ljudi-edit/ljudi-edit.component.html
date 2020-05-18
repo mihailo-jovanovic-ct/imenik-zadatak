@@ -1,0 +1,48 @@
+<div class="row">
+    <div class="col-xs-12">
+        <form [formGroup]="covekForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+                <div class="col-lg-12">
+                    <button type="submit" class="btn btn-success mr-2">Sacuvaj</button> 
+                    <button type="button" class="btn btn-warning" (click)="onCancel()">Ponisti</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="form-group">
+                        <label for="ime">Ime</label>
+                        <input
+                            type="text"
+                            id="ime"
+                            formControlName="ime"
+                            class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="form-group">
+                        <label for="broj">Broj telefona</label>
+                        <input
+                            type="text"
+                            id="broj"
+                            formControlName="broj"
+                            class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="form-group">
+                        <label for="ime">E-mail</label>
+                        <input
+                            type="text"
+                            id="mejl"
+                            formControlName="mejl"
+                            class="form-control">
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
