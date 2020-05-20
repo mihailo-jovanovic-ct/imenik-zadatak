@@ -3,7 +3,7 @@
         <form [formGroup]="covekForm" (ngSubmit)="onSubmit()">
             <div class="row">
                 <div class="col-lg-12">
-                    <button type="submit" class="btn btn-success mr-2">Sacuvaj</button> 
+                    <button type="submit" class="btn btn-success mr-2" [disabled]="!covekForm.valid">Sacuvaj</button> 
                     <button type="button" class="btn btn-warning" (click)="onCancel()">Ponisti</button>
                 </div>
             </div>
@@ -15,7 +15,12 @@
                             type="text"
                             id="ime"
                             formControlName="ime"
-                            class="form-control">
+                            class="form-control"
+                            [ngClass]="{'is-invalid': covekForm.get('ime').touched && covekForm.get('ime').invalid}"/>
+                            <div *ngIf="covekForm.get('ime').touched && covekForm.get('ime').invalid" class="invalid-feedback">
+                                <div *ngIf="covekForm.get('ime').errors.required">Obavezno Ime</div>
+                                <div *ngIf="covekForm.get('ime').errors.pattern">Mora biti puno ime i prezime</div>
+                            </div>
                     </div>
                 </div>
             </div>
@@ -34,12 +39,17 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="form-group">
-                        <label for="ime">E-mail</label>
+                        <label for="mejl">E-mail</label>
                         <input
                             type="text"
                             id="mejl"
                             formControlName="mejl"
-                            class="form-control">
+                            class="form-control"
+                            [ngClass]="{'is-invalid': covekForm.get('mejl').touched && covekForm.get('mejl').invalid}"/>
+                            <div *ngIf="covekForm.get('mejl').touched && covekForm.get('mejl').invalid" class="invalid-feedback">
+                                <div *ngIf="covekForm.get('mejl').errors.required">Obavezan Email</div>
+                                <div *ngIf="covekForm.get('mejl').errors.email">Mora biti vazeca Email adresa</div>
+                            </div>
                     </div>
                 </div>
             </div>

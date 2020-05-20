@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { LjudiService } from '../ljudi.service';
 
 @Component({
@@ -54,9 +54,9 @@ export class LjudiEditComponent implements OnInit {
     }
 
     this.covekForm = new FormGroup({
-      ime: new FormControl(covekIme),
+      ime: new FormControl(covekIme, [Validators.required, Validators.pattern('^[a-z]{1,20}\ [a-z]{1,20}$')]),
       broj: new FormControl(covekBroj),
-      mejl: new FormControl(covekMejl)
+      mejl: new FormControl(covekMejl, [Validators.required, Validators.email])
     });
   }
 
