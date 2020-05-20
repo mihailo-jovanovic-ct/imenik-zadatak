@@ -1,17 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { LjudiService } from '../ljudi.service';
+import { isValidNumber } from 'libphonenumber-js';
 
 @Component({
   selector: 'app-ljudi-edit',
   templateUrl: './ljudi-edit.component.html',
   styleUrls: ['./ljudi-edit.component.css']
 })
+
+
 export class LjudiEditComponent implements OnInit {
   id: number;
   editMode = false;
   covekForm: FormGroup;
+
 
   constructor(private route: ActivatedRoute,
               private ljudiService: LjudiService,
@@ -54,10 +58,22 @@ export class LjudiEditComponent implements OnInit {
     }
 
     this.covekForm = new FormGroup({
-      ime: new FormControl(covekIme, [Validators.required, Validators.pattern('^[a-z]{1,20}\ [a-z]{1,20}$')]),
-      broj: new FormControl(covekBroj),
+      ime: new FormControl(covekIme, [Validators.required, Validators.pattern('^^[a-zA-Z]{1,20}\ [a-zA-Z]{1,20}$')]),
+      broj: new FormControl(covekBroj, [Validators.required, numberValidator]),
       mejl: new FormControl(covekMejl, [Validators.required, Validators.email])
     });
   }
 
+
 }
+
+function numberValidator(control: FormControl) {
+  const broj = control.value;
+
+  if (isValidNumber(broj)) {
+   return null;
+  } else{
+   return Error;
+ }
+ }
+
